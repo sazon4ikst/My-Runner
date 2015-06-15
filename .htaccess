@@ -1,0 +1,23 @@
+AddDefaultCharset utf-8
+RewriteEngine on
+ErrorDocument 404 /index.php?show=404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^captcha.jpg?$ captcha/index.php
+RewriteRule ^image/max/w/140/pics/?$ /i/nofoto.png
+RewriteRule ^image/([A-Za-z0-9-_]+)/([0-9]+)/([0-9]+)/([%А-Яа-яA-Za-z0-9\.\-_/:]+)/?$ image.php?type=$1&w=$2&h=$3&url=$4
+RewriteRule ^image/([A-Za-z0-9-_]+)/w/([0-9]+)/([%А-Яа-яA-Za-z0-9\.\-_/:]+)/?$ image.php?type=$1&w=$2&url=$3
+RewriteRule ^image/([A-Za-z0-9-_]+)/h/([0-9]+)/([%А-Яа-яA-Za-z0-9\.\-_/:]+)/?$ image.php?type=$1&h=$2&url=$3
+RewriteRule ^pics/?$ i/nofoto.png
+
+RewriteRule ^api/?$ api.php [QSA,L]
+RewriteRule ^api/([A-Za-z0-9-_]+)/?$ api.php?cmd=$1  [QSA,L]
+RewriteRule ^api/([A-Za-z0-9-_]+)/([А-Яа-яA-Za-z0-9-_]+)/?$ api.php?cmd=$1&a=$2 [QSA,L]
+RewriteRule ^api/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/?$ api.php?cmd=$1&a=$2&b=$3 [QSA,L]
+RewriteRule ^api/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/?$ api.php?cmd=$1&a=$2&b=$3&c=$4 [QSA,L]
+
+
+RewriteRule ^([A-Za-z0-9-_]+)/?$ index.php?show=$1  [QSA,L]
+RewriteRule ^([A-Za-z0-9-_]+)/([А-Яа-яA-Za-z0-9-_]+)/?$ index.php?show=$1&a=$2 [QSA,L]
+RewriteRule ^([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/?$ index.php?show=$1&a=$2&b=$3 [QSA,L]
+RewriteRule ^([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/?$ index.php?show=$1&a=$2&b=$3&c=$4 [QSA,L]
